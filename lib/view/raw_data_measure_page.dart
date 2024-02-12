@@ -1,29 +1,21 @@
 import 'package:flutter/services.dart';
 import 'package:get_6axis_nrf52840_data/component/app_scaffold.dart';
-import 'package:get_6axis_nrf52840_data/component/settings_menu.dart';
-import 'package:get_6axis_nrf52840_data/foundation/app_color.dart';
 import 'package:get_6axis_nrf52840_data/foundation/app_text_theme.dart';
 import 'package:get_6axis_nrf52840_data/util/logger.dart';
 import 'package:intl/intl.dart';
-import 'package:get_6axis_nrf52840_data/util/func.dart';
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import "package:flutter_riverpod/flutter_riverpod.dart";
-import 'package:fl_chart/fl_chart.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:percent_indicator/percent_indicator.dart';
-import 'package:get_6axis_nrf52840_data/view/setting_page.dart';
 import 'package:get_6axis_nrf52840_data/component/chart.dart';
 import 'package:get_6axis_nrf52840_data/provider/model_providers.dart';
-import "package:get_6axis_nrf52840_data/provider/user_provider.dart";
 import 'package:get_6axis_nrf52840_data/component/app_button.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:http/http.dart' as http;
-import 'package:get_6axis_nrf52840_data/provider/database_provider.dart';
-import 'package:get_6axis_nrf52840_data/foundation/database_const.dart';
 import 'dart:io'; //ファイル出力用ライブラリ
 import 'package:path_provider/path_provider.dart'; //アプリがファイルを保存可能な場所を取得するライブラリ
 import 'package:external_path/external_path.dart';
@@ -191,13 +183,6 @@ class RawDataMeasurePage extends HookConsumerWidget {
                                                       .read(
                                                           bleProvider.notifier)
                                                       .connect(deviceName);
-                                                  ref.read(databaseProvider).update(
-                                                      "m_system_param",
-                                                      {
-                                                        DatabaseConst.system
-                                                            .value: deviceName
-                                                      },
-                                                      "${DatabaseConst.system.name}='peripheral_name'");
                                                   Navigator.pop(context);
                                                 },
                                                 child: Text(deviceName),

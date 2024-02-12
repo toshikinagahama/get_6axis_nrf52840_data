@@ -1,7 +1,6 @@
 import 'package:flutter/foundation.dart';
 import 'package:get_6axis_nrf52840_data/foundation/database_const.dart';
 import 'package:get_6axis_nrf52840_data/foundation/response.dart';
-import 'package:get_6axis_nrf52840_data/provider/database_provider.dart';
 import "package:get_6axis_nrf52840_data/util/logger.dart";
 import "package:flutter_riverpod/flutter_riverpod.dart";
 import 'package:get_6axis_nrf52840_data/data/model/user.dart';

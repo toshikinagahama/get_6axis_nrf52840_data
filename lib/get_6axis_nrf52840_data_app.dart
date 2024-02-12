@@ -5,7 +5,6 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:get_6axis_nrf52840_data/foundation/app_text_theme.dart';
 import 'package:get_6axis_nrf52840_data/route/app_route.gr.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:get_6axis_nrf52840_data/provider/database_provider.dart';
 
 class Get6axisNrf52840DataApp extends HookConsumerWidget {
   Get6axisNrf52840DataApp({Key? key}) : super(key: key);

@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:get_6axis_nrf52840_data/foundation/app_color.dart';
 import 'package:get_6axis_nrf52840_data/foundation/app_text_theme.dart';
 import 'package:get_6axis_nrf52840_data/component/app_scaffold.dart';
-import 'package:get_6axis_nrf52840_data/provider/database_provider.dart';
 import 'package:get_6axis_nrf52840_data/foundation/database_const.dart';
 import 'package:get_6axis_nrf52840_data/component/settings_menu_item.dart';
 import "package:get_6axis_nrf52840_data/provider/model_providers.dart";
@@ -14,7 +13,6 @@ class SettingsMenu extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    var user = ref.read(userProvider.select((value) => value.user));
     return Drawer(
       backgroundColor: Colors.transparent,
       child: Stack(
@@ -25,7 +23,7 @@ class SettingsMenu extends ConsumerWidget {
               elevation: 0.0,
               centerTitle: false,
               title: Text(
-                'username: ${user?.name}',
+                '',
                 style: AppText.title.bold(),
                 textAlign: TextAlign.left,
               ),
@@ -60,17 +58,6 @@ class SettingsMenu extends ConsumerWidget {
                               bottom: BorderSide(color: AppColor.white10),
                             ),
                           ),
-                        ),
-                        SettingMenuItem(
-                          title: 'ログアウト',
-                          onTap: () {
-                            ref.read(databaseProvider).update(
-                                "m_system_param",
-                                {DatabaseConst.system.value: ""},
-                                "${DatabaseConst.system.name}='${DatabaseConst.system.accessToken}'");
-                            ref.read(userProvider.notifier).signOut();
-                            context.router.popUntilRoot();
-                          },
                         ),
                         SettingMenuItem(
                           title: 'ヘルプ',
